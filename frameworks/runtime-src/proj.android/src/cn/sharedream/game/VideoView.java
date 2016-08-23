@@ -1,9 +1,8 @@
-package cn.sharedream.game;
+package cn.sharedream.game;//修改为自己的包名
 
 import java.io.IOException;
 
-import org.cocos2dx.lib.Cocos2dxLuaJavaBridge;
-import org.cocos2dx.lua.AppActivity;
+import org.cocos2dx.lua.AppActivity;//修改为自己的activity类
 
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Color;
@@ -28,7 +27,7 @@ public class VideoView extends SurfaceView implements SurfaceHolder.Callback,
 	private boolean surfaceCreated = false;
 
 	private TextView skipButton = null;
-	final private AppActivity appActivity ;
+	final private AppActivity appActivity ;//修改为自己的activity类
 
 	public VideoView(AppActivity appActivity) {
 
@@ -208,10 +207,7 @@ public class VideoView extends SurfaceView implements SurfaceHolder.Callback,
 					@Override
 					public void run() {
 						try {
-							Cocos2dxLuaJavaBridge.callLuaFunctionWithString(
-									luaOnFinishCallback, "FINISH");
-							Cocos2dxLuaJavaBridge
-									.releaseLuaFunction(luaOnFinishCallback);
+							doLuaFinishCallback(luaOnFinishCallback)
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
